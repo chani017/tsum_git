@@ -6,30 +6,31 @@ class Date:
         self.year = year
         self.month = month
         self.date = date
+        self.end_date = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-    def is_valid_date(self, year, month, date):
-        if is_valid_date() == True:
-            print(year + "년" + month + "월" + date + "일은 존재하는 날짜입니다.")
+    def is_leap_year(self):
+        if self.year % 400 == 0:
+            return True
+        elif self.year % 100 == 0:
+            return False
+        elif self.year % 4 == 0:
+            return True
         else:
-            print(year + "년" + month + "월" + date + "일은 존재하지 않는 날짜입니다.")
-        if  year % 4 == 0 and year % 100 == 0 or year % 400 == 0:
-            if (month % 2) == 1: #31일이 있는 달
-                if month <= 7:
-                    if date <= 0 or date > 31:
-                        return False
-                else:
-                    if date <= 0 or date > 30:
-                        return False
-        else: #31일이 없는 달
-            if month <= 6:
-                if month == 2:
-                    if date <= 0 or date > 29:
-                        return False
-                    elif date <= 0 or date > 28:
-                        return False
-                if date <= 0 or date > 30:
-                    return False
-            else: 
-                if date <= 0 or date > 31:
-                    return False
-        return True
+            return False
+
+    def is_valid_date(self, ):
+        if self.year <= 0:
+            return self.print_valid(False)
+        if self.is_leap_year():
+            self.end_date[1] += 1
+        if self.month > 12 or self.month < 0:
+            return self.print_valid(False)
+        if self.date > self.end_date[self.month -1] or self.date < 0:
+            return self.print_valid(False)
+        return self.print_valid(True)
+
+    def print_valid(self, bool):
+        if bool:
+            print(f"{self.year}년 {self.month}월 {self.date}일은 존재하는 날짜입니다.")
+        else:
+            print(f"{self.year}년 {self.month}월 {self.date}일은 존재하지 않는 날짜입니다.")

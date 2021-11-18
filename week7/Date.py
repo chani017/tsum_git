@@ -8,12 +8,12 @@ class Date:
         self.date = date
 
     def is_valid_date(self, year, month, date):
-        if  year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
+        if  year % 4 == 0 and year % 100 == 0 or year % 400 == 0:
             if (month % 2) == 1: #31일이 있는 달
                 if month <= 7:
                     if date <= 0 or date > 31:
                         return False
-                else: #month > 7
+                else:
                     if date <= 0 or date > 30:
                         return False
         else: #31일이 없는 달
@@ -28,4 +28,4 @@ class Date:
             else: 
                 if date <= 0 or date > 31:
                     return False
-        return True
+        print(year + "년" + month + "월" + date + "일은 존재하는 날짜입니다.")

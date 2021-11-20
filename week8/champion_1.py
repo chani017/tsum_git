@@ -1,14 +1,14 @@
 class Champion:
     def __init__(self, name):
         self.name = name
-        self.hp = 1000
-        self.cure = 15
-        self.speed = 300
 
 class Mana_Champion(Champion):
     def __init__(self, name):
-        super().__init__(name)
+        self.name = name
+        self.hp = 1000
+        self.cure = 15
         self.mana = 1000
+        self.speed = 300
 
     def cham_info(self):
         print(f"-----------------현재{self.name}정보-----------------")
@@ -16,7 +16,10 @@ class Mana_Champion(Champion):
 
 class Mana_none_Champion(Champion):
     def __init__(self, name):
-        super().__init__(name)
+        self.name = name
+        self.hp = 1000
+        self.cure = 15
+        self.speed = 300
         
     def cham_info(self):
         print(f"-----------------현재{self.name}정보-----------------")
